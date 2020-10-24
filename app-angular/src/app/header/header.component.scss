@@ -1,0 +1,12 @@
+:host {
+  grid-area: h;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 1fr;
+  background-color: #2B2628;
+  color: #FFFFFF;
+  align-items: center;
+  text-align: center;
+  padding: 0 30vw 0 30vw;
+  font-size: 20px;
+}
