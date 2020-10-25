@@ -1,0 +1,7 @@
+.ControlPanel{
+    grid-area: cp;
+    display:grid;
+    grid-template-areas: 'dg dc ds dr';
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
