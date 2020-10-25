@@ -1,0 +1,7 @@
+:host {
+  display: grid;
+  grid-template-areas: 'h' 'i' 'ss' 'dsp';
+  grid-template-rows: 10vh  60vh 20vh 100vh;
+  grid-template-columns: 1fr;
+  margin: 0;
+}
