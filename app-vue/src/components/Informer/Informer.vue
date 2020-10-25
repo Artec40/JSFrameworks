@@ -1,17 +1,18 @@
 <template>
     <div class="Informer">
-        <div>DECK SORTER</div>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'Informer'
+        name: 'Informer',
+        components: {}
     }
 </script>
 
 <style scoped>
-    .Informer{
+    .Informer {
         grid-area: i;
         color: #FFFFFF;
         background: #2B2628 url('../../../public/informer-background.jpg') no-repeat;
