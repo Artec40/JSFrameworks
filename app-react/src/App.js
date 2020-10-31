@@ -1,9 +1,10 @@
 import React from 'react'
 import './App.css'
-import Header from './Header/Header'
-import DeckSorterPage from './DeckSorterPage/DeckSorterPage'
-import SortStarter from './SortStarter/SortStarter'
-import Informer from './Informer/Informer'
+import Header from './components/Header/Header'
+import DeckSorterPage from './components/DeckSorterPage/DeckSorterPage'
+import SortStarter from './components/SortStarter/SortStarter'
+import Informer from './components/Informer/Informer'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
     return (
@@ -16,4 +17,9 @@ function App() {
     )
 }
 
-export default App
+const MyApp = () => {
+    return <BrowserRouter>
+        <App/>
+    </BrowserRouter>
+}
+export default MyApp

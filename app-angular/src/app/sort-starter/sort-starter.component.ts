@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SortStarterComponent implements OnInit {
 
+  scrollingDown(){
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    })
+  }
   constructor() { }
 
   ngOnInit(): void {

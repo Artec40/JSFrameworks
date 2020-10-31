@@ -1,12 +1,21 @@
 <template>
     <div class="SortStarter">
-        <button>Sort the deck</button>
+        <button v-on:click="scrollToBottom">Sort the deck</button>
     </div>
 </template>
 
 <script>
+
     export default {
-        name: 'SortStarter'
+        name: 'SortStarter',
+        methods: {
+            scrollToBottom: () => {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                })
+            }
+        }
     }
 </script>
 

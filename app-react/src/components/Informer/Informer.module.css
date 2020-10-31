@@ -1,0 +1,28 @@
+.Informer{
+    grid-area: i;
+    color: #FFFFFF;
+    background: #2B2628 url('/informer-background.jpg') no-repeat;
+    font-size: 30px;
+    letter-spacing: 1vw;
+    font-style: italic;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.APItext{
+    font-style: normal;
+    text-align: left;
+    font-size: 22px;
+    padding-left: 250px;
+    padding-right: 1100px;
+    letter-spacing: normal;
+}
+
+.APPtext{
+    font-style: normal;
+    text-align: left;
+    font-size: 22px;
+    padding-left: 250px;
+    padding-right: 1100px;
+    letter-spacing: normal;
+}

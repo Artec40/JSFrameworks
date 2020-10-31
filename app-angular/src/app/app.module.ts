@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { HeaderComponent } from './header/header.component';
 import { InformerComponent } from './informer/informer.component';
 import { SortStarterComponent } from './sort-starter/sort-starter.component';
@@ -26,7 +26,8 @@ import { DeckSorterComponent } from './deck-sorter-page/control-panel/deck-sorte
     DeckCreaterComponent,
     DeckGetterComponent,
     DeckRemoverComponent,
-    DeckSorterComponent
+    DeckSorterComponent,
+
   ],
   imports: [
     BrowserModule,
