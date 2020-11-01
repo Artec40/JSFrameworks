@@ -5,6 +5,8 @@ import DeckSorterPage from './components/DeckSorterPage/DeckSorterPage'
 import SortStarter from './components/SortStarter/SortStarter'
 import Informer from './components/Informer/Informer'
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from './redux/redux-store'
 
 function App() {
     return (
@@ -19,7 +21,9 @@ function App() {
 
 const MyApp = () => {
     return <BrowserRouter>
-        <App/>
+        <Provider store={store}>
+            <App/>
+        </Provider>
     </BrowserRouter>
 }
 export default MyApp
