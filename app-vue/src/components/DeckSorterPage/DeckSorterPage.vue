@@ -1,17 +1,19 @@
 <template>
     <div class="DeckSorter">
-        <div class="Deck">Deck</div>
+        <Deck/>
         <ControlPanel/>
     </div>
 </template>
 
 <script>
     import ControlPanel from './ControlPanel/ControlPanel'
+    import Deck from './Deck/Deck'
 
     export default {
         name: 'DeckSorterPage',
         components: {
-            ControlPanel
+            ControlPanel,
+            Deck
         }
     }
 </script>
@@ -23,11 +25,5 @@
         grid-template-areas: 'd' 'cp';
         grid-template-rows: 75vh 25vh;
         grid-template-columns: 1fr;
-    }
-
-    .Deck {
-        grid-area: d;
-        background: #888888 url('../../../public/deck-sorter-background.jpg') no-repeat;
-        background-size: 100%;
     }
 </style>
