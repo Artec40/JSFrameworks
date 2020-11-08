@@ -1,13 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Select} from "@ngxs/store";
+import {Card} from "../../../store/app.model";
+import {Observable} from "rxjs/index";
+import {AppState} from "../../../store/app.state";
 
 @Component({
   selector: 'app-deck',
-  templateUrl: './deck.component.html',
+  template: `
+  <app-card *ngFor="let card of cards$ | async" [url]="directoryUrl+card.url"></app-card>`,
   styleUrls: ['./deck.component.scss']
 })
 export class DeckComponent implements OnInit {
+  directoryUrl: string ='/assets/images';
 
-  constructor() { }
+  @Select(AppState.getCards) cards$: Observable<Card[]>;
+
+  constructor() {
+   }
+
 
   ngOnInit(): void {
   }

@@ -4,7 +4,7 @@
         <div class="APPtext">spa app developed on javascript
             <ul>libraries:
                 <li>vue - work with DOM</li>
-                <li>- - business layer</li>
+                <li>vuex - business layer</li>
                 <li>- - work with state</li>
                 <li>Vue Router - work with routing</li>
                 <li>- - work with api requests</li>
