@@ -14,13 +14,12 @@
 
 .API {
     grid-area: api;
-    text-decoration: none;
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .APP {
     grid-area: app;
-    text-decoration: none;
     color: #FFFFFF;
+    cursor: pointer;
 }
-

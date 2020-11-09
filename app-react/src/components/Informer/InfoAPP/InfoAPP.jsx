@@ -2,7 +2,7 @@ import React from 'react'
 import s from '../Informer.module.css'
 
 let InfoAPP = () => {
-    return <div>
+    return <div className={s.Informer}>
         <div>APP</div>
         <div className={s.APPtext}>spa app developed on javascript
             <ul>libraries:

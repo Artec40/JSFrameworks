@@ -2,7 +2,7 @@ import React from 'react'
 import s from '../Informer.module.css'
 
 let InfoAPI = () => {
-    return <div>
+    return <div className={s.Informer}>
         <div>API</div>
         <div className={s.APItext}>api developed on .net c#
             <ul>requests:
