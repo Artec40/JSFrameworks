@@ -11,10 +11,12 @@ namespace DeckSorter.Web
     {
         public string Suit { get; }
         public string Rank { get; }
-        public Card(string suit, string rank)
+        public string Url { get; }
+        public Card(string suit, string rank, string url)
         {
             this.Suit = suit;
             this.Rank = rank;
+            this.Url = url;
         }
     }
 }

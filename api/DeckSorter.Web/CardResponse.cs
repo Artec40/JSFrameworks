@@ -8,5 +8,6 @@ namespace DeckSorter.Web
     public class CardResponse
     {
         public string CardName { get; set; }
+        public string CardUrl { get; set; }
     }
 }

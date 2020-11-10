@@ -11,5 +11,6 @@ namespace DeckSorter.Web
     {
         string Suit { get; }
         string Rank { get; }
+        string Url { get; }
     }
 }

@@ -33,7 +33,7 @@ namespace DeckSorter.Web
                 {
                     foreach (string rank in RanksRepository)
                     {
-                        fiftyTwoCards[currentCard] = new Card(suit, rank);
+                        fiftyTwoCards[currentCard] = new Card(suit, rank, $"/cards/{rank}-{suit}.png");
                         currentCard++;
                     }
                 }
@@ -54,7 +54,7 @@ namespace DeckSorter.Web
                 {
                     foreach (string rank in RanksRepository.Skip(4))
                     {
-                        thirtySixCards[currentCard] = new Card(suit, rank);
+                        thirtySixCards[currentCard] = new Card(suit, rank, $"/cards/{rank}-{suit}.png");
                         currentCard++;
                     }
                 }
@@ -75,7 +75,7 @@ namespace DeckSorter.Web
                 {
                     foreach (string rank in RanksRepository.Skip(5))
                     {
-                        thirtyTwoCards[currentCard] = new Card(suit, rank);
+                        thirtyTwoCards[currentCard] = new Card(suit, rank, $"/cards/{rank}-{suit}.png");
                         currentCard++;
                     }
                 }
@@ -96,7 +96,7 @@ namespace DeckSorter.Web
                 {
                     foreach (string rank in RanksRepository.Skip(7))
                     {
-                        twentyFourCards[currentCard] = new Card(suit, rank);
+                        twentyFourCards[currentCard] = new Card(suit, rank, $"/cards/{rank}-{suit}.png");
                         currentCard++;
                     }
                 }

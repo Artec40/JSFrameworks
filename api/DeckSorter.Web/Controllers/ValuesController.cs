@@ -41,7 +41,7 @@ namespace DeckSorter.Web.Controllers
                     if (deckName == deck.Key)
                     {
                         deckResponse.Name = deck.Key;
-                        deckResponse.Cards = deck.Value.CardsInDeck.Select(x => new CardResponse { CardName = $"{x.Rank} {x.Suit}" }).ToArray();
+                        deckResponse.Cards = deck.Value.CardsInDeck.Select(x => new CardResponse { CardName = $"{x.Rank} {x.Suit}", CardUrl=x.Url }).ToArray();
                         // Работает только с IList в DeckResponse;
                         //    deckResponse.Cards = new List<CardResponse>();
                         //    foreach (Card card in deck.Value.CardsInDeck)
