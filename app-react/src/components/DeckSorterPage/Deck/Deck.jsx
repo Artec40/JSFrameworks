@@ -3,7 +3,7 @@ import s from './Deck.module.css'
 import Card from './Card/Card'
 
 let Deck = ({cards}) => {
-    let deck = cards.map((c) => <Card url={c.url} className={s.Card}/>)
+    let deck = cards.map((c) => <Card className={s.Card} url={c.cardUrl}/>)
 
     return <div className={s.Deck}>
         {deck}
