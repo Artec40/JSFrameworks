@@ -27,7 +27,12 @@ let DeckRemover = ({
 
         <div>
             <NavLink to={'/deck-removed'}>
-                <button onClick={() => removeDeck(dataOnRemoveButtonClick)}>Remove</button>
+                {
+                    dataOnRemoveButtonClick
+                        ? <button onClick={() => removeDeck(dataOnRemoveButtonClick)}>Remove</button>
+                        : <button onClick={() => removeDeck(decks[0])}>Remove</button>
+                }
+
             </NavLink>
         </div>
     </div>

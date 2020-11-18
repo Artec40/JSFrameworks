@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 let DeckGetter = ({decks, dataOnShowButtonClick, setDataOnShowButtonClick}) => {
 
     let decksNameList = decks.map((d) => <option value={d}>{d}</option>)
-
     return <div className={s.DeckGetter}>
         <div className={s.Title}>
             <b>GET DECK</b>
@@ -20,9 +19,15 @@ let DeckGetter = ({decks, dataOnShowButtonClick, setDataOnShowButtonClick}) => {
         </div>
 
         <div>
-            <NavLink to={'/deck/' + dataOnShowButtonClick}>
-                <button>Show</button>
-            </NavLink>
+            {
+                dataOnShowButtonClick
+                    ? <NavLink to={'/deck/' + dataOnShowButtonClick}>
+                        <button>Show</button>
+                    </NavLink>
+                    : <NavLink to={'/deck/' + decks[0]}>
+                        <button>Show</button>
+                    </NavLink>
+            }
         </div>
     </div>
 

@@ -27,7 +27,12 @@ let DeckSorter = ({
 
         <div>
             <NavLink to='/deck-shuffled'>
-                <button onClick={()=>shuffleDeck(dataOnShuffleButtonClick)}>Shuffle</button>
+                {
+                    dataOnShuffleButtonClick
+                        ? <button onClick={() => shuffleDeck(dataOnShuffleButtonClick)}>Shuffle</button>
+                        : <button onClick={() => shuffleDeck(decks[0])}>Shuffle</button>
+                }
+
             </NavLink>
         </div>
     </div>

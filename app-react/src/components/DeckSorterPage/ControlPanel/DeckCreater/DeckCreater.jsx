@@ -30,7 +30,14 @@ let DeckCreater = ({
 
         <div>
             <NavLink to='/deck-created'>
-                <button onClick={() => createDeck(deckNameOnCreateInput, dataOnCreateButtonClick)}>Create</button>
+                {
+                    dataOnCreateButtonClick
+                        ? <button
+                            onClick={() => createDeck(deckNameOnCreateInput, dataOnCreateButtonClick)}>Create</button>
+                        : <button
+                            onClick={() => createDeck(deckNameOnCreateInput, 24)}>Create</button>
+                }
+
             </NavLink>
         </div>
     </div>

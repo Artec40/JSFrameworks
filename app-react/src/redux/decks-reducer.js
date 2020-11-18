@@ -71,7 +71,7 @@ const decksReducer = (state = initialState, action) => {
         case SET_DATA_ON_REMOVE_BUTTON_CLICK: {
             return {
                 ...state,
-                currentDataOnButtonClick: {...state.currentDataOnButtonClick, removeDeckName: action.selectValue}
+                currentDataOnButtonClick: {...state.currentDataOnButtonClick, re: action.selectValue}
             }
         }
         default:
