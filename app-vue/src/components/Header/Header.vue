@@ -1,18 +1,23 @@
 <template>
     <div class="Header">
-        <router-link :to="{ name: 'api-description'}">
-            <div class="API">About API</div>
-        </router-link>
-        <router-link :to="{ name: 'app-description'}">
-            <div class="APP">About APP</div>
-        </router-link>
+        <div v-on:click="ChangeInfoToApi()" class="API">About
+            API
+        </div>
+        <div v-on:click="ChangeInfoToApp()" class="APP">About APP</div>
     </div>
 </template>
 
 <script>
+    import { mapMutations } from 'vuex'
+
     export default {
         name: 'Header',
-        props: {}
+        methods: {
+            ...mapMutations('informer', {
+                ChangeInfoToApp: 'CHANGE_INFO_TO_APP',
+                ChangeInfoToApi: 'CHANGE_INFO_TO_API',
+            })
+        }
     }
 </script>
 
@@ -35,11 +40,13 @@
     .API {
         grid-area: api;
         color: #FFFFFF;
+        cursor: pointer;
     }
 
     .APP {
         grid-area: app;
         color: #FFFFFF;
+        cursor: pointer;
     }
 
     a {

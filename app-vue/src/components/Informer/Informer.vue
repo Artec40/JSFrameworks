@@ -1,13 +1,23 @@
 <template>
     <div class="Informer">
-        <router-view></router-view>
+        <InfoAPP v-if="this.INFORMER_DATA === 'app'"/>
+        <InfoAPI v-else-if="this.INFORMER_DATA === 'api'"/>
+        <Title v-else/>
     </div>
 </template>
 
 <script>
+    import Title from './Title/Title'
+    import InfoAPP from './InfoAPP/InfoAPP'
+    import InfoAPI from './InfoAPI/InfoAPI'
+    import { mapGetters } from 'vuex'
+
     export default {
         name: 'Informer',
-        components: {}
+        components: {InfoAPI, InfoAPP, Title},
+        computed: {
+            ...mapGetters('informer',['INFORMER_DATA']),
+        }
     }
 </script>
 

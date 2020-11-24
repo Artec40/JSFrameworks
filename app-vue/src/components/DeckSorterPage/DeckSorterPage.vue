@@ -1,19 +1,17 @@
 <template>
     <div class="DeckSorter">
-        <Deck/>
+        <router-view></router-view>
         <ControlPanel/>
     </div>
 </template>
 
 <script>
     import ControlPanel from './ControlPanel/ControlPanel'
-    import Deck from './Deck/Deck'
 
     export default {
         name: 'DeckSorterPage',
         components: {
-            ControlPanel,
-            Deck
+            ControlPanel
         }
     }
 </script>

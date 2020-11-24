@@ -1,24 +1,36 @@
 import VueRouter from 'vue-router'
-import InfoAPI from '../components/Informer/InfoAPI/InfoAPI'
-import InfoAPP from '../components/Informer/InfoAPP/InfoAPP'
-import Title from '../components/Informer/Title/Title'
+import DeckCreated from '../components/DeckSorterPage/DeckCreated/DeckCreated'
+import DeckShuffled from '../components/DeckSorterPage/DeckShuffled/DeckShuffled'
+import DeckRemoved from '../components/DeckSorterPage/DeckRemoved/DeckRemoved'
+import EmptyDeck from '../components/DeckSorterPage/EmptyDeck/EmptyDeck'
+import Deck from '../components/DeckSorterPage/Deck/Deck'
 
 export default new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/api',
-            name: 'api-description',
-            component: InfoAPI
+            path: '/deck',
+            name: 'deck',
+            component: Deck
         },
         {
-            path: '/app',
-            name: 'app-description',
-            component: InfoAPP
+            path: '/deck-created',
+            name: 'deck-created',
+            component: DeckCreated
+        },
+        {
+            path: '/deck-shuffled',
+            name: 'deck-shuffled',
+            component: DeckShuffled
+        },
+        {
+            path: '/deck-removed',
+            name: 'deck-removed',
+            component: DeckRemoved
         },
         {
             path: '*',
-            component: Title
+            component: EmptyDeck
         }
     ]
 })

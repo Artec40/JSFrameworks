@@ -14,7 +14,7 @@
         },
         computed: {
             cards() {
-                return this.$store.state.decks[0].cards
+                return this.$store.state.decks.decks[0].cards
             }
         }
     }
