@@ -1,7 +1,7 @@
 <template>
-    <div class="DeckPage">
-        DECK REMOVED!
-    </div>
+        <div class="DeckPage">
+            DECK REMOVED!
+        </div>
 </template>
 
 <script>

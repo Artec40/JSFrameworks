@@ -9,9 +9,10 @@ export default new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/deck',
+            path: '/deck/:deckName',
             name: 'deck',
-            component: Deck
+            component: Deck,
+            props: true
         },
         {
             path: '/deck-created',

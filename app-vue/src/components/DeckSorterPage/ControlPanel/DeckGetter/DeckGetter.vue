@@ -5,27 +5,50 @@
         </div>
 
         <div class='Selector'>
-            deck name: <select>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+            deck name: <select v-model="deckName">
+            <option v-for="deck in decks()"
+                    v-bind:key="decks().indexOf(deck)"
+                    v-bind:value="deck">{{deck}}
+            </option>
         </select>
         </div>
 
-        <div>
+        <router-link :to="'/deck/'+deckName">
             <button>Show</button>
-        </div>
+        </router-link>
     </div>
 </template>
 
 <script>
+
+    import { mapMutations, mapState } from 'vuex'
+
     export default {
-        name: 'DeckGetter'
+        name: 'DeckGetter',
+        methods: {
+            ...mapState('decks', {
+                decks: state => state.decks,
+                deckNameInput: state => state.currentDataOnButtonClick.showDeckName
+            }),
+            ...mapMutations('decks', {
+                setDataOnShowButtonClick: 'SET_DATA_ON_SHOW_BUTTON_CLICK'
+            })
+        },
+        computed: {
+            deckName: {
+                get() {
+                    return this.deckNameInput()
+                },
+                set(name) {
+                    this.setDataOnShowButtonClick(name)
+                }
+            }
+        }
     }
 </script>
 
 <style scoped>
-    .DeckGetter{
+    .DeckGetter {
         grid-area: dg;
         background: #F0D4A4 url('../../../../../public/get-deck.jpg') no-repeat;
         background-size: 100%;
@@ -41,7 +64,7 @@
         padding-top: 1vh;
     }
 
-    .Selector{
+    .Selector {
         background: rgba(255, 255, 255, 0.7);
         padding-bottom: 10px;
         margin-bottom: 15px;
@@ -52,8 +75,9 @@
         border: none;
         outline: none;
     }
-    select:hover{
-        color:#D40000;
+
+    select:hover {
+        color: #D40000;
     }
 
 </style>

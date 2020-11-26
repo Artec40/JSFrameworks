@@ -5,23 +5,56 @@
         </div>
 
         <div class='Selector'>
-            deck name: <input type='text'/>
-            cards in deck: <select>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+            deck name: <input v-model="deckName" type='text'/>
+            cards in deck: <select v-model="cardsInDeck">
+            <option>24</option>
+            <option>32</option>
+            <option>36</option>
+            <option>52</option>
         </select>
         </div>
-
-        <div>
-            <button>Create</button>
-        </div>
+        <router-link to="/deck-created">
+            <button v-on:click="createDeck({deckName,cardsInDeck})">Create</button>
+        </router-link>
     </div>
 </template>
 
 <script>
+    import { mapActions, mapMutations, mapState } from 'vuex'
+
     export default {
-        name: 'DeckCreater'
+        name: 'DeckCreater',
+        methods: {
+            ...mapState('decks', {
+                cardsInDeckInput: state => state.currentDataOnButtonClick.createDeck.cardsInDeck,
+                deckNameInput: state => state.currentDataOnButtonClick.createDeck.deckName
+            }),
+            ...mapMutations('decks', {
+                setDeckNameOnCreateInput: 'SET_DECKNAME_ON_CREATE_INPUT',
+                setDataOnCreateButtonClick: 'SET_DATA_ON_CREATE_BUTTON_CLICK'
+            }),
+            ...mapActions('decks', {
+                createDeck: 'CREATE_DECK'
+            })
+        },
+        computed: {
+            cardsInDeck: {
+                get() {
+                    return Number(this.cardsInDeckInput())
+                },
+                set(cards) {
+                    this.setDataOnCreateButtonClick(cards)
+                }
+            },
+            deckName: {
+                get() {
+                    return this.deckNameInput()
+                },
+                set(name) {
+                    this.setDeckNameOnCreateInput(name)
+                }
+            }
+        }
     }
 </script>
 
@@ -54,8 +87,9 @@
         border: none;
         outline: none;
     }
-    select:hover{
-        color:#D40000;
+
+    select:hover {
+        color: #D40000;
     }
 
     input {
@@ -65,7 +99,8 @@
         outline: none;
         font-size: 16px;
     }
-    input:hover{
-        color:#D40000;
+
+    input:hover {
+        color: #D40000;
     }
 </style>

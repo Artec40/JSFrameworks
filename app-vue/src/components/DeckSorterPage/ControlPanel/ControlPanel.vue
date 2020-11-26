@@ -12,6 +12,7 @@
     import DeckGetter from './DeckGetter/DeckGetter'
     import DeckRemover from './DeckRemover/DeckRemover'
     import DeckSorter from './DeckSorter/DeckSorter'
+    import { mapActions } from 'vuex'
 
     export default {
         name: 'ControlPanel',
@@ -20,14 +21,22 @@
             DeckCreater,
             DeckRemover,
             DeckSorter
+        },
+        methods: {
+            ...mapActions('decks', {
+                getDecks: 'GET_DECKS'
+            })
+        },
+        mounted() {
+            this.getDecks()
         }
     }
 </script>
 
 <style scoped>
-    .ControlPanel{
+    .ControlPanel {
         grid-area: cp;
-        display:grid;
+        display: grid;
         grid-template-areas: 'dg dc ds dr';
         grid-template-rows: 1fr;
         grid-template-columns: 1fr 1fr 1fr 1fr;

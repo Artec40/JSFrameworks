@@ -5,22 +5,47 @@
         </div>
 
         <div class="Selector">
-            deck name: <select>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
+            deck name: <select v-model="deckName">
+            <option v-for="deck in decks()"
+                    v-bind:key="decks().indexOf(deck)"
+                    v-bind:value="deck">{{deck}}
+            </option>
         </select>
         </div>
 
-        <div>
-            <button>Shuffle</button>
-        </div>
+        <router-link to="/deck-shuffled">
+            <button v-on:click="shuffleDeck(deckName)">Shuffle</button>
+        </router-link>
     </div>
 </template>
 
 <script>
+    import { mapActions, mapMutations, mapState } from 'vuex'
+
     export default {
-        name: 'DeckSorter'
+        name: 'DeckSorter',
+        methods: {
+            ...mapState('decks', {
+                decks: state => state.decks,
+                deckNameInput: state => state.currentDataOnButtonClick.shuffleDeckName
+            }),
+            ...mapMutations('decks', {
+                setDataOnShuffleButtonClick: 'SET_DATA_ON_SHUFFLE_BUTTON_CLICK'
+            }),
+            ...mapActions('decks', {
+                shuffleDeck: 'SHUFFLE_DECK'
+            })
+        },
+        computed: {
+            deckName: {
+                get() {
+                    return this.deckNameInput()
+                },
+                set(name) {
+                    this.setDataOnShuffleButtonClick(name)
+                }
+            }
+        }
     }
 </script>
 
@@ -41,7 +66,7 @@
         padding-top: 1vh;
     }
 
-    .Selector{
+    .Selector {
         background: rgba(255, 255, 255, 0.7);
         padding-bottom: 10px;
         margin-bottom: 15px;
@@ -52,8 +77,9 @@
         border: none;
         outline: none;
     }
-    select:hover{
-        color:#D40000;
+
+    select:hover {
+        color: #D40000;
     }
 
 </style>

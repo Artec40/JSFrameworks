@@ -1,6 +1,6 @@
 <template>
     <div class="Card"
-         :style="{ background: `url(${url})`,backgroundSize: 'cover' }">
+         :style="{ background: `url(${url}) center/cover no-repeat`}">
     </div>
 </template>
 

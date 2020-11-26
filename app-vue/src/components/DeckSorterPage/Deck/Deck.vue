@@ -1,21 +1,40 @@
 <template>
-    <div class="Deck">
-        <Card v-for='card in cards' v-bind:key="card.id" v-bind:url="card.url"/>
+    <EmptyDeck v-if="this.currentDeck().length === 0"/>
+    <div v-else class="Deck">
+        <Card v-for='card in currentDeck().cards'
+              v-bind:key="currentDeck().cards.indexOf(card)"
+              v-bind:url="card.cardUrl"/>
     </div>
 </template>
 
 <script>
     import Card from './Card/Card'
+    import { mapActions, mapState } from 'vuex'
+    import EmptyDeck from '../EmptyDeck/EmptyDeck'
 
     export default {
         name: 'Deck',
         components: {
-            Card
+            Card,
+            EmptyDeck
         },
-        computed: {
-            cards() {
-                return this.$store.state.decks.decks[0].cards
+        methods: {
+            ...mapState('decks', {
+                currentDeck: state => state.currentDeck
+            }),
+            ...mapActions('decks', {
+                getDeck: 'GET_CURRENT_DECK'
+            }),
+            refreshCurrentDeck() {
+                let deckName = this.$route.params.deckName
+                this.getDeck(deckName)
             }
+        },
+        mounted() {
+            this.refreshCurrentDeck()
+        },
+        updated() {
+            this.refreshCurrentDeck()
         }
     }
 </script>

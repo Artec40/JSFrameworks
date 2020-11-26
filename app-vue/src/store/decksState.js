@@ -1,117 +1,62 @@
+import { deckAPI } from '../api'
+
 export const decksState = {
     namespaced: true,
     state: {
-        decks: [
-            {
-                id: 1,
-                name: '24deck',
-                quantity: 24,
-                cards: [
-                    {
-                        name: 'nine clubs',
-                        url: '/cards/nine-clubs.png'
-                    },
-                    {
-                        name: 'ten clubs',
-                        url: '/cards/ten-clubs.png'
-                    },
-                    {
-                        name: 'jack clubs',
-                        url: '/cards/jack-clubs.png'
-                    },
-                    {
-                        name: 'queen clubs',
-                        url: '/cards/queen-clubs.png'
-                    },
-                    {
-                        name: 'king clubs',
-                        url: '/cards/king-clubs.png'
-                    },
-                    {
-                        name: 'ace clubs',
-                        url: '/cards/ace-clubs.png'
-                    },
-                    {
-                        name: 'nine diamonds',
-                        url: '/cards/nine-diamonds.png'
-                    },
-                    {
-                        name: 'ten diamonds',
-                        url: '/cards/ten-diamonds.png'
-                    },
-                    {
-                        name: 'jack diamonds',
-                        url: '/cards/jack-diamonds.png'
-                    },
-                    {
-                        name: 'queen diamonds',
-                        url: '/cards/queen-diamonds.png'
-                    },
-                    {
-                        name: 'king diamonds',
-                        url: '/cards/king-diamonds.png'
-                    },
-                    {
-                        name: 'ace diamonds',
-                        url: '/cards/ace-diamonds.png'
-                    },
-                    {
-                        name: 'nine hearts',
-                        url: '/cards/nine-hearts.png'
-                    },
-                    {
-                        name: 'ten hearts',
-                        url: '/cards/ten-hearts.png'
-                    },
-                    {
-                        name: 'jack hearts',
-                        url: '/cards/jack-hearts.png'
-                    },
-                    {
-                        name: 'queen hearts',
-                        url: '/cards/queen-hearts.png'
-                    },
-                    {
-                        name: 'king hearts',
-                        url: '/cards/king-hearts.png'
-                    },
-                    {
-                        name: 'ace hearts',
-                        url: '/cards/ace-hearts.png'
-                    },
-                    {
-                        name: 'nine spades',
-                        url: '/cards/nine-spades.png'
-                    },
-                    {
-                        name: 'ten spades',
-                        url: '/cards/ten-spades.png'
-                    },
-                    {
-                        name: 'jack spades',
-                        url: '/cards/jack-spades.png'
-                    },
-                    {
-                        name: 'queen spades',
-                        url: '/cards/queen-spades.png'
-                    },
-                    {
-                        name: 'king spades',
-                        url: '/cards/king-spades.png'
-                    },
-                    {
-                        name: 'ace spades',
-                        url: '/cards/ace-spades.png'
-                    },
-                ]
-            }
-        ]
-    },
-    getters: {
-        DECKS: state => {
-            return state.decks
+        decks: [],
+        currentDeck: [],
+        currentDataOnButtonClick: {
+            showDeckName: '',
+            createDeck: {deckName: '', cardsInDeck: 0},
+            shuffleDeckName: '',
+            removeDeckName: ''
         }
     },
-    mutations: {},
-    actions: {},
+
+    mutations: {
+        SET_DECKS(state, decks) {
+            state.decks = decks
+        },
+        SET_CURRENT_DECK(state, deck) {
+            state.currentDeck = deck
+        },
+        SET_DATA_ON_CREATE_BUTTON_CLICK(state, selectValue) {
+            state.currentDataOnButtonClick.createDeck.cardsInDeck = selectValue
+        },
+        SET_DECKNAME_ON_CREATE_INPUT(state, inputValue) {
+            state.currentDataOnButtonClick.createDeck.deckName = inputValue
+        },
+        SET_DATA_ON_SHOW_BUTTON_CLICK(state, selectValue) {
+            state.currentDataOnButtonClick.showDeckName = selectValue
+        },
+        SET_DATA_ON_SHUFFLE_BUTTON_CLICK(state, selectValue) {
+            state.currentDataOnButtonClick.shuffleDeckName = selectValue
+        },
+        SET_DATA_ON_REMOVE_BUTTON_CLICK(state, selectValue) {
+            state.currentDataOnButtonClick.removeDeckName = selectValue
+        }
+    },
+
+    actions: {
+        async GET_DECKS({commit}) {
+            let deck = await deckAPI.getDecks()
+            commit('SET_DECKS', deck.data)
+        },
+        async GET_CURRENT_DECK({commit}, deckName) {
+            let deck = await deckAPI.getDeck(deckName)
+            commit('SET_CURRENT_DECK', deck.data)
+        },
+        async CREATE_DECK({dispatch}, {deckName, cardsInDeck}) {
+            await deckAPI.createDeck(deckName, cardsInDeck)
+            dispatch('GET_DECKS')
+        },
+        async SHUFFLE_DECK({dispatch}, deckName) {
+            await deckAPI.shuffleDeck(deckName)
+            dispatch('GET_DECKS')
+        },
+        async REMOVE_DECK({dispatch}, deckName) {
+            await deckAPI.deleteDeck(deckName)
+            dispatch('GET_DECKS')
+        }
+    },
 }
