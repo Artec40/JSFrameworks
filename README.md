@@ -2,7 +2,7 @@
 Research React/Angular/Vue by creating deckSorterAPI with deckSorterAPP
 
 
-./api - директори с бэкендом, написанным на C# Entity Framework.
+./api - директори с бэкендом, написанным на C#.
 
 ./app-angular - директори с фронтендом, написанным на стэке технологий Angular/NGXS;
 
